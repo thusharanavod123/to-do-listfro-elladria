@@ -9,12 +9,12 @@ Open `index.html` in a browser. No installation or build step is required.
 - Use the arrows to view another week.
 - Select an empty time slot to add a support request.
 - Hover or focus an issue and choose **Mark fixed** to turn it green.
-- Entries are saved automatically in the browser.
+- Entries are saved to Firebase and update live across browsers and devices.
 
 ## Host it
 
 Upload `index.html`, `styles.css`, and `app.js` to any static host, such as Netlify, Cloudflare Pages, GitHub Pages, or a normal web server.
 
-## Data note
+## Firebase setup
 
-This no-backend version stores entries in `localStorage`. Entries persist on the same browser and device, but are not shared between different computers or phones. Sharing one live board between employees requires a small backend/database (for example Supabase or Firebase); the interface can remain exactly the same and still require no employee sign-in.
+The board uses Firebase Realtime Database with Anonymous Authentication. The Firebase web configuration is in `firebase-config.js`, and the database rules to publish in Firebase Console are in `firebase.rules.json`. Employees do not see a sign-in screen.

@@ -1,0 +1,28 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "issues": {
+      ".read": "auth != null",
+      "$issueId": {
+        ".write": "auth != null",
+        ".validate": "newData.hasChildren(['text', 'name', 'fixed', 'createdAt'])",
+        "text": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 240"
+        },
+        "name": {
+          ".validate": "newData.isString() && newData.val().length <= 50"
+        },
+        "fixed": {
+          ".validate": "newData.isBoolean()"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber()"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    }
+  }
+}
