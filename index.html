@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f4ef" />
+    <title>Elladria — Weekly Support Board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Elladria support board">
+          <span class="brand-mark" aria-hidden="true">E</span>
+          <span>ELLADRIA</span>
+        </a>
+
+        <div class="week-controls" aria-label="Week controls">
+          <button class="icon-button" id="previousWeek" type="button" aria-label="Previous week">←</button>
+          <button class="week-button" id="currentWeek" type="button">
+            <span id="weekLabel">This week</span>
+            <small id="weekRange"></small>
+          </button>
+          <button class="icon-button" id="nextWeek" type="button" aria-label="Next week">→</button>
+        </div>
+
+        <div class="status-key" aria-label="Issue status key">
+          <span><i class="status-dot open"></i> Needs attention</span>
+          <span><i class="status-dot fixed"></i> Fixed</span>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">WEEKLY TECH SUPPORT</p>
+          <h1>What needs fixing?</h1>
+          <p class="subtitle">Choose a time, describe the issue, and we’ll keep track of the rest.</p>
+        </div>
+        <div class="summary" aria-live="polite">
+          <div><strong id="openCount">0</strong><span>Open</span></div>
+          <div><strong id="fixedCount">0</strong><span>Fixed</span></div>
+        </div>
+      </section>
+
+      <section class="calendar-wrap" aria-label="Seven day technical support calendar">
+        <div class="calendar" id="calendar"></div>
+      </section>
+
+      <p class="storage-note">Saved automatically on this device.</p>
+    </main>
+
+    <dialog class="issue-dialog" id="issueDialog">
+      <form method="dialog" id="issueForm">
+        <button class="close-button" value="cancel" type="submit" aria-label="Close">×</button>
+        <p class="eyebrow">NEW SUPPORT REQUEST</p>
+        <h2 id="dialogTitle">Add an issue</h2>
+        <p class="dialog-slot" id="dialogSlot"></p>
+
+        <label for="employeeName">Your name <span>(optional)</span></label>
+        <input id="employeeName" name="employeeName" maxlength="50" placeholder="e.g. Maya" autocomplete="name" />
+
+        <label for="issueText">What is the problem?</label>
+        <textarea id="issueText" name="issueText" maxlength="240" rows="5" placeholder="Describe the technical difficulty..." required></textarea>
+        <div class="form-footer">
+          <span id="characterCount">0 / 240</span>
+          <button class="primary-button" id="saveIssue" value="default" type="submit">Add request</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
